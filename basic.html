@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unary Operations Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculation">
+        <input id="numInput" type="number" placeholder="Enter a number">
+    </div>
+    <button onclick="Calculator('absolute')">Absolute</button>
+    <button onclick="Calculator('negation')">Negation</button>
+    <button onclick="Calculator('factorial')">Factorial</button>
+    <button onclick="Calculator('increment')">Increment</button>
+    <button onclick="Calculator('decrement')">Decrement</button>
+    <div id="result"></div>
+</body>
+
+<script>
+
+    function Calculator(key) {
+        let input = document.getElementById('numInput').value;
+        let result = document.getElementById('result');
+
+        let number = Number(input);
+        let res;
+        switch (key) {
+            case 'absolute':
+                res = Math.abs(number)
+                break;
+            case 'negation' :
+                res = -number;
+                break;
+            case 'factorial':
+                res = factorial(number)
+                break;
+            case 'increment':
+                res = ++number;
+                break;
+            case 'decrement':
+                res = --number;
+                break;
+            default:
+                res = "Invalid operation";
+                break;
+        }
+        result.innerHTML = `Result ${res}`;
+        function factorial(n){
+            if (n==0 || n==1) return 1;
+            else if(n<0) return result.innerHTML = "Input is not valid";
+            else return n*factorial(n-1);
+        }
+    }
+</script>
+</html>
